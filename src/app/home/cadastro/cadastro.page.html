@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button defaultHref="home"></ion-back-button>
+      <h3>Menu Principal</h3>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h3><strong>Cadastro</strong></h3>
+
+  <form [formGroup]="form">
+    <ion-item class="form-group">
+      <ion-input formControlName="user" placeholder="Usuário"></ion-input>
+      
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-input formControlName="password" min="4" placeholder="Senha" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-input formControlName="confirmpassword" min="4" placeholder="Confirmar Senha" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-input formControlName="name" placeholder="Nome Completo"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-input formControlName="email" placeholder="E-mail"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-input formControlName="end" placeholder="Endereço"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-label position="stacked" color="medium">Data de Nascimento</ion-label>
+      <ion-input formControlName="date" type="date"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-input formControlName="cpf" placeholder="CPF" maxlength="11"></ion-input>
+    </ion-item>
+  </form>
+
+  <ion-grid *ngIf="form.controls.user.errors !== null && form.controls.user.value !== ''">
+    <ion-row>
+      <ion-col size="auto">
+          <ion-icon name="medical" color="danger"></ion-icon>
+      </ion-col>
+      
+      <ion-col size="auto">
+        <small>Usuário deve ter no mínimo 4 caracteres simples.</small>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="form.controls.email.errors !== null && form.controls.email.value !== ''">
+    <ion-row>
+      <ion-col size="auto">
+          <ion-icon name="medical" color="danger"></ion-icon>
+      </ion-col>
+      
+      <ion-col size="auto">
+        <small>Formato de e-mail inválido.</small>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="form.controls.cpf.errors !== null && form.controls.cpf.value !== ''">
+    <ion-row>
+      <ion-col size="auto">
+          <ion-icon name="medical" color="danger"></ion-icon>
+      </ion-col>
+      
+      <ion-col size="auto">
+        <small>CPF deve conter apenas números.</small>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="form.controls.password.value.length < 4 && form.controls.password.value !== ''">
+    <ion-row>
+      <ion-col size="auto">
+          <ion-icon name="medical" color="danger"></ion-icon>
+      </ion-col>
+      <ion-col size="auto">
+        <small>Senha precisa ter mais de 4 caracteres.</small>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="form.controls.confirmpassword.invalid && form.controls.confirmpassword.value !== ''">
+    <ion-row *ngIf="form.controls.confirmpassword.value.length > 4">
+      <ion-col size="auto">
+          <ion-icon name="medical" color="danger"></ion-icon>
+      </ion-col>
+      <ion-col size="auto">
+        <small>Senha e Confirmar Senha precisam ser iguais.</small>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="form.controls.confirmpassword.value.length <= 4">
+      <ion-col size="auto">
+        <ion-icon name="medical" color="danger"></ion-icon>
+      </ion-col>
+      <ion-col size="auto">
+        <small>Senha precisa ter mais de 4 caracteres.</small>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" (click)=onSubmit() routerLink="/home/login">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

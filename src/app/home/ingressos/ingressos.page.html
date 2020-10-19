@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      <ion-buttons>
+        <ion-row class="ion-align-items-center" size="auto">
+          <ion-back-button defaultHref="home/principal"></ion-back-button>
+        </ion-row>
+      </ion-buttons>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h3><strong>Comprar ingressos para o filme Titanic</strong></h3>
+  <form [formGroup]="form">
+    <ion-item class="form-group">
+      <ion-label position="stacked">Meia-entrada</ion-label>
+      <ion-input formControlName="meiaentrada" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-label position="stacked">Entrada Inteira</ion-label>
+      <ion-input formControlName="entrada" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-label position="stacked">Meia-entrada Itaú</ion-label>
+      <ion-input formControlName="meiaparceria" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item class="form-group">
+      <ion-label><strong>Total</strong></ion-label>
+      <ion-input type="number" value="Readonly" readonly></ion-input>
+    </ion-item>
+  </form>
+
+  <div>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" size="auto" routerLink="/home">Sair</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)=onSubmit() expand="full" size="auto" routerLink="/home/pagamento">Comprar</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

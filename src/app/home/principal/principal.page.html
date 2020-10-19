@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      <ion-buttons>
+        <ion-row class="ion-align-items-center" size="auto">
+          <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-row>
+      </ion-buttons>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content class="ion-padding">
+  <h3><strong>Filmes Disponíveis:</strong></h3>
+
+  <ion-grid>
+
+          <ion-card class="ion-padding" *ngFor="let filme of filmes; let i=index;">
+            <ion-card-title class="ion-padding">
+              <ion-label>{{filme}}</ion-label>
+            </ion-card-title>
+
+            <ion-segment>
+              <img src="{{imagens[i]}}" alt="Imagem do filme {{filme}}" class="filme-poster">
+            </ion-segment>
+
+            <ion-card-subtitle>
+              <ion-row class="ion-align-items-center">
+                <ion-col>
+                  <ion-badge *ngIf="isNovo[i]">Novo</ion-badge>
+                </ion-col>
+
+                <ion-col size="auto">
+                  <label routerLink="/home/ingressos">Comprar Ingressos</label>
+                </ion-col>  
+              </ion-row>
+            </ion-card-subtitle>
+            
+          </ion-card>
+
+  </ion-grid>
+
+</ion-content>
